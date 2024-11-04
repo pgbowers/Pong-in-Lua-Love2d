@@ -7,7 +7,7 @@ function Player:new()
   self.y = love.graphics.getHeight() / 2 - 75
   self.width = 20
   self.height = 150
-  self.speed = 500
+  self.speed = 550
 end
 
 function Player:update(dt)

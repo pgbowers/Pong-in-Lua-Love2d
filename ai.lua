@@ -8,7 +8,7 @@ function Ai:new()
   self.width = 20
   self.height = 150
   self.yVel = 0
-  self.speed = 500
+  self.speed = 900
 end
 
 function Ai:update(dt)
