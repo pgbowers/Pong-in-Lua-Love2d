@@ -28,10 +28,7 @@ function love.update(dt)
     if aiScore == 5 then
       gameState = 3
     end
-  end
-  
-  
-   
+  end      
 end
 
 function love.draw()
@@ -73,10 +70,7 @@ function love.draw()
     local text = "Game Paused"
     love.graphics.print(text, font, love.graphics.getWidth() / 2 - font:getWidth(text) / 2, love.graphics.getHeight() / 2 - font:getHeight(text) / 2)   
     love.graphics.setColor(WHITE)
-  end
-  
-  
-
+  end   
 end
 
 function love.keypressed(key)
