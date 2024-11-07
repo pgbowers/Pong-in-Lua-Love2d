@@ -16,12 +16,18 @@ function love.load()
   Ball = Ball()
   playerScore = 0
   aiScore = 0
+  
+  gameState = 2 -- 2 is playing
 end
 
 function love.update(dt)
-  Player:update(dt)
-  Ai:update(dt)
-  Ball:update(dt) 
+  if gameState == 2 then
+    Player:update(dt)
+    Ai:update(dt)
+    Ball:update(dt)    
+  end
+  
+   
 end
 
 function love.draw()
@@ -35,6 +41,15 @@ function love.draw()
   love.graphics.print(aiScore, font, 600, 50)
   love.graphics.setColor(WHITE)
   
+  if gameState == 4 then    
+    love.graphics.setColor(MEDIUM_GREEN) 
+    
+    local text = "Game Paused"
+    love.graphics.print(text, font, love.graphics.getWidth() / 2 - font:getWidth(text) / 2, love.graphics.getHeight() / 2 - font:getHeight(text) / 2)
+   
+    love.graphics.setColor(WHITE)
+  end
+  
   Player:draw()
   Ai:draw()
   Ball:draw()  
@@ -44,7 +59,12 @@ end
 function love.keypressed(key)
   if key == "escape" or key == "q" then
     love.event.quit()
-  end  
+  end 
+  if key == 'p' and gameState == 2 then         
+    gameState = 4 
+  else gameState = 2
+  end
+  
 end
 
 
