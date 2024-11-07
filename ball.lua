@@ -8,7 +8,7 @@ function Ball:new()
   self.width = 20
   self.height = 20
   self.speed = 300 
-  self.xVel = -self.speed * love.math.random(5)--ai serves to player at start of game
+  self.xVel = -self.speed * love.math.random(1)--ai serves to player at start of game
   self.yVel = 0  
 end
 
