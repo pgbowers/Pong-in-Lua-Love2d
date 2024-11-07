@@ -4,33 +4,36 @@
 function love.load()
   love.graphics.setBackgroundColor(LIGHT_BLUE)
   
-  font = love.graphics.newFont("Assets/INVASION2000.TTF", 40)
+  font = love.graphics.newFont("Assets/INVASION2000.TTF", 60)
   
   Object = require "classic"
   require "player"
   require "ai"
   require "ball"
   
-  Player = Player(50) -- creates a new instance of the Player class
+  Player = Player() -- creates a new instance of the Player class
   Ai = Ai() -- creates a second new instance of the Player class with different parameters
   Ball = Ball()
   playerScore = 0
   aiScore = 0
 end
 
-
 function love.update(dt)
   Player:update(dt)
   Ai:update(dt)
-  Ball:update(dt)
-  --Player2:update(dt)
+  Ball:update(dt) 
 end
 
 function love.draw()
   love.mouse.setVisible(false)
   
+  -- draw a center line
+  love.graphics.rectangle("fill", love.graphics.getWidth() /2, 0, 4, love.graphics.getHeight())
+  
+  love.graphics.setColor(ORANGE)
   love.graphics.print(playerScore, font, 200, 50)
   love.graphics.print(aiScore, font, 600, 50)
+  love.graphics.setColor(WHITE)
   
   Player:draw()
   Ai:draw()

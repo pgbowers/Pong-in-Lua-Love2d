@@ -3,10 +3,10 @@
 Player = Object:extend()
 
 function Player:new()
-  self.x = 20
-  self.y = love.graphics.getHeight() / 2 - 75
   self.width = 20
   self.height = 150
+  self.x = 20
+  self.y = love.graphics.getHeight() / 2 - self.height /2  
   self.speed = 550
 end
 

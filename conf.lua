@@ -1,6 +1,6 @@
 function love.conf(t)
   t.window.title = "Pong by Peter"
-  t.window.width = 1000
+  t.window.width = 800
   t.window.height = 600
   t.window.display = 1
   

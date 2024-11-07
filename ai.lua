@@ -8,7 +8,7 @@ function Ai:new()
   self.width = 20
   self.height = 150
   self.yVel = 0
-  self.speed = 900
+  self.speed = 800
 end
 
 function Ai:update(dt)
@@ -38,9 +38,7 @@ function acquireBall(dt)
   --elseif love.keyboard.isDown('l') then
    --Ai.y = Ai.y + Ai.speed * dt
   end
-
 end
-
 
 -- stay on the screen
 function checkAiBounds()
@@ -50,7 +48,3 @@ function checkAiBounds()
     Ai.y = love.graphics.getHeight() - Ai.height
   end
 end
-
-
-
-
