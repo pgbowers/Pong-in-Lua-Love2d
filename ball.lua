@@ -7,8 +7,8 @@ function Ball:new()
   self.y = love.graphics.getHeight() / 2
   self.width = 20
   self.height = 20
-  self.speed = 300 
-  self.xVel = -self.speed * love.math.random(1)--ai serves to player at start of game
+  self.speed = 400 
+  self.xVel = -self.speed --ai serves to player at start of game
   self.yVel = 0  
 end
 
@@ -28,17 +28,17 @@ function moveBall(dt)
 end
 
 function collision()
-  if checkCollision(Ball, Player) then
-    Ball.xVel = Ball.speed
+  if checkCollision(Ball, Player) then    
     centerBall = Ball.y + Ball.height / 2
     local centerPlayer = Player.y + Player.height / 2    
-    local collisionPointPlayer = centerBall - centerPlayer    
-    Ball.yVel = collisionPointPlayer * 5
+    local collisionPointPlayer = centerBall - centerPlayer
+    Ball.xVel = Ball.speed
+    Ball.yVel = collisionPointPlayer * 2.5 -- tweaked for best game play
   elseif checkCollision(Ball, Ai) then 
     local centerAi = Ai.y + Ai.height / 2
     local collisionPointAi = centerBall - centerAi
     Ball.xVel = -Ball.speed
-    Ball.yVel = -collisionPointAi * 2    
+    Ball.yVel = -collisionPointAi * 2.5    
   end      
 end
 
@@ -59,12 +59,12 @@ function checkBallBounds()
 
 -- bounce off the top and bottom
   if Ball.y > love.graphics.getHeight() - Ball.height then
-    Ball.yVel= -Ball.yVel
+    Ball.yVel = -Ball.yVel
+    --Ball.y= Ball.y
   elseif Ball.y < 0 then
-    Ball.yVel= -Ball.yVel
+    Ball.yVel = - Ball.yVel
   end
 end
-
 
 -- generic function to find collision between any two non-rotating rectangles
 function checkCollision(a, b)
