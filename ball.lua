@@ -7,7 +7,7 @@ function Ball:new()
   self.y = love.graphics.getHeight() / 2
   self.width = 20
   self.height = 20
-  self.speed = 400 
+  self.speed = 300 
   self.xVel = -self.speed --ai serves to player at start of game
   self.yVel = 0  
 end
@@ -29,16 +29,18 @@ end
 
 function collision()
   if checkCollision(Ball, Player) then    
-    centerBall = Ball.y + Ball.height / 2
+    local centerBall = Ball.y + Ball.height / 2
     local centerPlayer = Player.y + Player.height / 2    
     local collisionPointPlayer = centerBall - centerPlayer
     Ball.xVel = Ball.speed
-    Ball.yVel = collisionPointPlayer * 2.5 -- tweaked for best game play
-  elseif checkCollision(Ball, Ai) then 
+    Ball.yVel = collisionPointPlayer * 4 -- tweaked for best game play
+  end
+  if checkCollision(Ball, Ai) then
+    local centerBall = Ball.y + Ball.height / 2
     local centerAi = Ai.y + Ai.height / 2
     local collisionPointAi = centerBall - centerAi
     Ball.xVel = -Ball.speed
-    Ball.yVel = -collisionPointAi * 2.5    
+    Ball.yVel = collisionPointAi * 4    
   end      
 end
 
@@ -54,7 +56,7 @@ function checkBallBounds()
     Ball.x = love.graphics.getWidth() /2 -- reset to center
     Ball.y = love.graphics.getHeight() / 2
     playerScore = playerScore + 1 --point for player
-    Ball.xVel = Ball.speed --player serves to ai   
+    Ball.xVel = Ball.speed * love.math.random(1)--player serves to ai   
   end
 
 -- bounce off the top and bottom

@@ -4,7 +4,7 @@ Player = Object:extend()
 
 function Player:new()
   self.width = 20
-  self.height = 150
+  self.height = 100
   self.x = 20
   self.y = love.graphics.getHeight() / 2 - self.height /2  
   self.speed = 550

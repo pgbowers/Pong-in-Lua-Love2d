@@ -6,14 +6,20 @@ function Ai:new()
   self.x = love.graphics.getWidth() - 40
   self.y = love.graphics.getHeight() / 2 - 75
   self.width = 20
-  self.height = 150
+  self.height = 100
   self.yVel = 0
-  self.speed = 800
+  self.speed = 500
+  
+  self.timer = 0
+  self.rate = 0.05
 end
 
 function Ai:update(dt)
-  AiMove(dt)
- -- moveAi(dt)
+  Ai.timer = Ai.timer + dt
+  if Ai.timer > Ai.rate then
+    Ai.timer = 0
+    AiMove(dt) 
+  end
   checkAiBounds()
   acquireBall()
 end
@@ -32,11 +38,7 @@ function acquireBall(dt)
   elseif Ball.y > Ai.y + Ai.height then
     Ai.yVel = Ai.speed
   else
-    Ai.yVel = 0
- --if love.keyboard.isDown('p') then
-   --Ai.y = Ai.y - Ai.speed * dt
-  --elseif love.keyboard.isDown('l') then
-   --Ai.y = Ai.y + Ai.speed * dt
+    Ai.yVel = 0 
   end
 end
 
