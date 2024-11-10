@@ -26,7 +26,17 @@ function movePlayer(dt)
   elseif love.keyboard.isDown('s') then
    Player.y = Player.y + Player.speed * dt
   end
+  -- Nov 10, 2024 - gamepad code
+  if joystick then -- if a joystick/gamepad is connected     
+    if joystick:getGamepadAxis('lefty') == 1 then     
+      Player.y = Player.y + Player.speed * dt     
+    elseif joystick:getGamepadAxis('lefty') == -1 then 
+      Player.y = Player.y - Player.speed * dt   
+    end        
+  end 
 end
+
+    
 
 -- stay on the screen
 function checkPlayerBounds()

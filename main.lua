@@ -17,6 +17,10 @@ function love.load()
   playerScore = 0
   aiScore = 0
   
+  -- check for a gamepad or joystick
+  joysticks = love.joystick.getJoysticks()
+  joystick = joysticks[1]
+  
   gameState = 1 -- 1 is Start, 2 is Playing, 3 is Over and 4 is Pause
 end
 
@@ -71,6 +75,12 @@ function love.draw()
     love.graphics.print(text, font, love.graphics.getWidth() / 2 - font:getWidth(text) / 2, love.graphics.getHeight() / 2 - font:getHeight(text) / 2)   
     love.graphics.setColor(WHITE)
   end   
+end
+
+function love.gamepadpressed(joystick, button)
+  if button == "x" then
+        love.event.quit()
+  end
 end
 
 function love.keypressed(key)
