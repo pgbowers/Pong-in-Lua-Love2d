@@ -50,13 +50,13 @@ function checkBallBounds()
     Ball.x = love.graphics.getWidth() /2 -- reset to center
     Ball.y = love.graphics.getHeight() / 2
     aiScore = aiScore + 1 -- point for ai
-    Ball.xVel = -Ball.speed --* love.math.random(10)-- ai serves to player
+    Ball.xVel = -Ball.speed * love.math.random(1, 1.5)-- ai serves to player
     --Ball.y = love.math.random(-1, 1)   
   elseif Ball.x > love.graphics.getWidth() - Ball.width then --ball hit right side
     Ball.x = love.graphics.getWidth() /2 -- reset to center
     Ball.y = love.graphics.getHeight() / 2
     playerScore = playerScore + 1 --point for player
-    Ball.xVel = Ball.speed * love.math.random(1)--player serves to ai   
+    Ball.xVel = Ball.speed * love.math.random(1,1.5)--player serves to ai   
   end
 
 -- bounce off the top and bottom

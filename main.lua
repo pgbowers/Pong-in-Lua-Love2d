@@ -16,6 +16,7 @@ function love.load()
   Ball = Ball()
   playerScore = 0
   aiScore = 0
+  winner = ""
   
   -- check for a gamepad or joystick
   joysticks = love.joystick.getJoysticks()
@@ -30,10 +31,14 @@ function love.update(dt)
     Ai:update(dt)
     Ball:update(dt)
     if aiScore == 5 then
+      winner = "Computer Wins! "
       gameState = 3
-    end
-  end      
-end
+    elseif playerScore == 5 then
+      winner = "You Won! "
+      gameState = 3
+    end    
+  end
+end 
 
 function love.draw()
   love.mouse.setVisible(false)
@@ -64,8 +69,8 @@ function love.draw()
   
   if gameState == 3 then -- game over screen   
     love.graphics.setColor(MEDIUM_GREEN)     
-    local text = "Game Over"
-    love.graphics.print(text, font, love.graphics.getWidth() / 2 - font:getWidth(text) / 2, love.graphics.getHeight() / 2 - font:getHeight(text) / 2)   
+    --local text = ("Game Over", winner, "the winner!")
+    love.graphics.print(winner, font, love.graphics.getWidth() / 2 - font:getWidth(winner) / 2, love.graphics.getHeight() / 2 - font:getHeight(winner) / 2)   
     love.graphics.setColor(WHITE)
   end
   
