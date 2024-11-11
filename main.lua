@@ -18,6 +18,8 @@ function love.load()
   aiScore = 0
   winner = ""
   
+  sounds = {['wall_hit'] = love.audio.newSource('Assets/beep1.ogg', 'static')}
+  
   -- check for a gamepad or joystick
   joysticks = love.joystick.getJoysticks()
   joystick = joysticks[1]
@@ -93,8 +95,7 @@ function love.gamepadpressed(joystick, button)
     gameState = 4
   elseif button == "back" and gameState == 4 then
     gameState = 2
-  end
-  
+  end  
 end
 
 function love.keypressed(key)
@@ -108,8 +109,7 @@ function love.keypressed(key)
   end
   if key == "space" and gameState == 1 then -- start the game
     gameState = 2
-  end
-  
+  end  
 end
 
 

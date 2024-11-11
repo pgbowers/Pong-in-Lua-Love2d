@@ -34,13 +34,15 @@ function collision()
     local collisionPointPlayer = centerBall - centerPlayer
     Ball.xVel = Ball.speed
     Ball.yVel = collisionPointPlayer * 4 -- tweaked for best game play
+    sounds['wall_hit']:play()
   end
   if checkCollision(Ball, Ai) then
     local centerBall = Ball.y + Ball.height / 2
     local centerAi = Ai.y + Ai.height / 2
     local collisionPointAi = centerBall - centerAi
     Ball.xVel = -Ball.speed
-    Ball.yVel = collisionPointAi * 4    
+    Ball.yVel = collisionPointAi * 4 
+    sounds['wall_hit']:play()
   end      
 end
 
