@@ -15,7 +15,7 @@ end
 function Ball:update(dt)
   moveBall(dt)
   collision()
-  checkBallBounds() 
+  checkBallBounds()
 end
 
 function Ball:draw()
@@ -34,7 +34,8 @@ function collision()
     local collisionPointPlayer = centerBall - centerPlayer
     Ball.xVel = Ball.speed
     Ball.yVel = collisionPointPlayer * 4 -- tweaked for best game play
-    sounds['wall_hit']:play()
+    --sounds['player_beep']:play()
+    player_beep:play()
   end
   if checkCollision(Ball, Ai) then
     local centerBall = Ball.y + Ball.height / 2
@@ -42,7 +43,8 @@ function collision()
     local collisionPointAi = centerBall - centerAi
     Ball.xVel = -Ball.speed
     Ball.yVel = collisionPointAi * 4 
-    sounds['wall_hit']:play()
+    --sounds['player_beep']:play()
+    ai_beep:play()
   end      
 end
 
@@ -52,12 +54,14 @@ function checkBallBounds()
     Ball.x = love.graphics.getWidth() /2 -- reset to center
     Ball.y = love.graphics.getHeight() / 2
     aiScore = aiScore + 1 -- point for ai
+    missed:play()
     Ball.xVel = -Ball.speed * love.math.random(1, 1.5)-- ai serves to player
     --Ball.y = love.math.random(-1, 1)   
   elseif Ball.x > love.graphics.getWidth() - Ball.width then --ball hit right side
     Ball.x = love.graphics.getWidth() /2 -- reset to center
     Ball.y = love.graphics.getHeight() / 2
     playerScore = playerScore + 1 --point for player
+    missed:play()
     Ball.xVel = Ball.speed * love.math.random(1,1.5)--player serves to ai   
   end
 

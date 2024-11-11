@@ -18,7 +18,9 @@ function love.load()
   aiScore = 0
   winner = ""
   
-  sounds = {['wall_hit'] = love.audio.newSource('Assets/beep1.ogg', 'static')}
+  player_beep = love.audio.newSource('Assets/players_beep.wav', 'static')
+  ai_beep= love.audio.newSource('Assets/ai_beep.wav', 'static')
+  missed = love.audio.newSource('Assets/missed.wav', 'static')
   
   -- check for a gamepad or joystick
   joysticks = love.joystick.getJoysticks()
