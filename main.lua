@@ -86,6 +86,15 @@ function love.gamepadpressed(joystick, button)
   if button == "x" then
         love.event.quit()
   end
+  if button == "start" and gameState == 1 then
+    gameState = 2
+  end
+  if button == "back" and gameState == 2 then
+    gameState = 4
+  elseif button == "back" and gameState == 4 then
+    gameState = 2
+  end
+  
 end
 
 function love.keypressed(key)
