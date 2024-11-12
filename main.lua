@@ -1,5 +1,6 @@
 -- Oct29, 2024 - An attempt to make a finished Pong game just for the experience - Peter
 -- also learning classes using the classic.lua library
+-- Nov 12 - Pong is mostly playable but could use some graphics and the various game states could be detailed better. Still, not bad for 2 weeks work.
 
 function love.load()
   love.graphics.setBackgroundColor(LIGHT_BLUE)
@@ -26,7 +27,7 @@ function love.load()
   joysticks = love.joystick.getJoysticks()
   joystick = joysticks[1]
   
-  gameState = 1 -- 1 is Start, 2 is Playing, 3 is Over and 4 is Pause
+  gameState = 1 -- 1 is Start, 2 is Playing, 3 is Over and 4 is Paused
 end
 
 function love.update(dt)

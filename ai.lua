@@ -10,6 +10,7 @@ function Ai:new()
   self.yVel = 0
   self.speed = 600
   
+  -- slow down the AI response to ball moves so it doesn't win all the time
   self.timer = 0
   self.rate = 0.045
 end

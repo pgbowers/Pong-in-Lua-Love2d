@@ -5,14 +5,13 @@ Ball = Object:extend()
 function Ball:new()
   self.x = love.graphics.getWidth() /2
   self.y = love.graphics.getHeight() / 2
-  self.radius = 10
+  self.radius = 15
   
   self.width = 20
   self.height = 20
-  self.speed = 300 
+  self.speed = 500 
   self.xVel = -self.speed --ai serves to player at start of game
-  self.yVel = 0  
-  
+  self.yVel = 0   
 end
 
 function Ball:update(dt)
@@ -22,9 +21,8 @@ function Ball:update(dt)
 end
 
 function Ball:draw()
-  myBall = love.graphics.newImage("Assets/ball_small.png")
-  love.graphics.draw(myBall, self.x, self.y)
-  --love.graphics.circle("fill", self.x, self.y, self.radius)
+  local myBall = love.graphics.newImage("Assets/ball_small.png")
+  love.graphics.draw(myBall, self.x, self.y) 
 end
 
 function moveBall(dt)   
@@ -33,15 +31,12 @@ function moveBall(dt)
 end
 
 function collision()
-  if checkCollision(Ball, Player) then    
-    --local centerBall = Ball.y + Ball.height / 2
-    local centerBall = Ball.y + Ball.radius
-    --local centerPlayer = Player.y + Player.height / 2    
+  if checkCollision(Ball, Player) then 
+    local centerBall = Ball.y + Ball.radius       
     local centerPlayer = Player.y + Player.height / 2    
     local collisionPointPlayer = centerBall - centerPlayer
     Ball.xVel = Ball.speed
-    Ball.yVel = collisionPointPlayer * 4 -- tweaked for best game play
-    --sounds['player_beep']:play()
+    Ball.yVel = collisionPointPlayer * 4 -- tweaked for best game play    
     player_beep:play()
   end
   if checkCollision(Ball, Ai) then
@@ -49,8 +44,7 @@ function collision()
     local centerAi = Ai.y + Ai.height / 2
     local collisionPointAi = centerBall - centerAi
     Ball.xVel = -Ball.speed
-    Ball.yVel = collisionPointAi * 4 
-    --sounds['player_beep']:play()
+    Ball.yVel = collisionPointAi * 4     
     ai_beep:play()
   end      
 end
@@ -62,20 +56,18 @@ function checkBallBounds()
     Ball.y = love.graphics.getHeight() / 2
     aiScore = aiScore + 1 -- point for ai
     missed:play()
-    Ball.xVel = -Ball.speed * love.math.random(1, 1.5)-- ai serves to player
-    --Ball.y = love.math.random(-1, 1)   
+    Ball.xVel = -Ball.speed  - 100 -- slow the serves a bit     
   elseif Ball.x > love.graphics.getWidth() - Ball.width then --ball hit right side
     Ball.x = love.graphics.getWidth() /2 -- reset to center
     Ball.y = love.graphics.getHeight() / 2
     playerScore = playerScore + 1 --point for player
     missed:play()
-    Ball.xVel = Ball.speed * love.math.random(1,1.5)--player serves to ai   
+    Ball.xVel = Ball.speed  - 100  
   end
 
 -- bounce off the top and bottom
   if Ball.y > love.graphics.getHeight() - Ball.height then
-    Ball.yVel = -Ball.yVel
-    --Ball.y= Ball.y
+    Ball.yVel = -Ball.yVel    
   elseif Ball.y < 0 then
     Ball.yVel = - Ball.yVel
   end

@@ -34,9 +34,7 @@ function movePlayer(dt)
       Player.y = Player.y - Player.speed * dt   
     end        
   end 
-end
-
-    
+end    
 
 -- stay on the screen
 function checkPlayerBounds()
