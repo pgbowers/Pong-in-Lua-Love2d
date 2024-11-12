@@ -5,11 +5,14 @@ Ball = Object:extend()
 function Ball:new()
   self.x = love.graphics.getWidth() /2
   self.y = love.graphics.getHeight() / 2
+  self.radius = 10
+  
   self.width = 20
   self.height = 20
   self.speed = 300 
   self.xVel = -self.speed --ai serves to player at start of game
   self.yVel = 0  
+  
 end
 
 function Ball:update(dt)
@@ -19,7 +22,9 @@ function Ball:update(dt)
 end
 
 function Ball:draw()
-  love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
+  myBall = love.graphics.newImage("Assets/ball_small.png")
+  love.graphics.draw(myBall, self.x, self.y)
+  --love.graphics.circle("fill", self.x, self.y, self.radius)
 end
 
 function moveBall(dt)   
@@ -29,7 +34,9 @@ end
 
 function collision()
   if checkCollision(Ball, Player) then    
-    local centerBall = Ball.y + Ball.height / 2
+    --local centerBall = Ball.y + Ball.height / 2
+    local centerBall = Ball.y + Ball.radius
+    --local centerPlayer = Player.y + Player.height / 2    
     local centerPlayer = Player.y + Player.height / 2    
     local collisionPointPlayer = centerBall - centerPlayer
     Ball.xVel = Ball.speed
@@ -38,7 +45,7 @@ function collision()
     player_beep:play()
   end
   if checkCollision(Ball, Ai) then
-    local centerBall = Ball.y + Ball.height / 2
+    local centerBall = Ball.y - Ball.radius
     local centerAi = Ai.y + Ai.height / 2
     local collisionPointAi = centerBall - centerAi
     Ball.xVel = -Ball.speed
