@@ -58,7 +58,7 @@ function love.draw()
     love.graphics.setColor(WHITE)
   end
   
-  if gameState ==2 then --Playing screen
+  if gameState == 2 then --Playing screen
     -- draw a center line
     love.graphics.rectangle("fill", love.graphics.getWidth() /2, 0, 4, love.graphics.getHeight())
     -- draw the scores
@@ -76,6 +76,7 @@ function love.draw()
     love.graphics.setColor(MEDIUM_GREEN)     
     --local text = ("Game Over", winner, "the winner!")
     love.graphics.print(winner, font, love.graphics.getWidth() / 2 - font:getWidth(winner) / 2, love.graphics.getHeight() / 2 - font:getHeight(winner) / 2)   
+    love.graphics.print("Play again? Y/N", font, love.graphics.getWidth() / 2 - font:getWidth("Play again Y/N") / 2, love.graphics.getHeight() / 2 + 50)   
     love.graphics.setColor(WHITE)
   end
   
@@ -98,7 +99,11 @@ function love.gamepadpressed(joystick, button)
     gameState = 4
   elseif button == "back" and gameState == 4 then
     gameState = 2
-  end  
+  end 
+  --if button == "a" and gameState == 3 then
+    --gameState = 2
+  --end
+  
 end
 
 function love.keypressed(key)
@@ -112,7 +117,10 @@ function love.keypressed(key)
   end
   if key == "space" and gameState == 1 then -- start the game
     gameState = 2
-  end  
+  end 
+  --if key == "y" then -- restart the game    
+    --gameState = 1
+  --end  
 end
 
 
