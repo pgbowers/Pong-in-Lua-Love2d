@@ -100,10 +100,9 @@ function love.gamepadpressed(joystick, button)
   elseif button == "back" and gameState == 4 then
     gameState = 2
   end 
-  --if button == "a" and gameState == 3 then
-    --gameState = 2
-  --end
-  
+  if button == "a" and gameState == 3 then
+    resetGame()
+  end    
 end
 
 function love.keypressed(key)
@@ -118,9 +117,19 @@ function love.keypressed(key)
   if key == "space" and gameState == 1 then -- start the game
     gameState = 2
   end 
-  --if key == "y" then -- restart the game    
-    --gameState = 1
-  --end  
+  if key == "y" and gameState == 3 then -- restart the game    
+    resetGame()
+  elseif key == "n" and gameState == 3 then
+    love.event.quit()
+  end  
 end
+
+function resetGame()
+  playerScore = 0
+  aiScore = 0
+  winner = ""
+  gameState = 2
+end
+
 
 
