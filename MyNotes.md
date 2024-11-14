@@ -1,7 +1,8 @@
 Nov 13 - Working on a Y/N start again choice.
 
 Tasks to complete the game:
-  - Get the start again routine working
+  - Get the start again routine working - DONE
+  - Code some random Y velocity on serves - DONE
   - Draw my own paddles
   - Draw my own ball
   - Improve the background

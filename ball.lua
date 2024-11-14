@@ -52,17 +52,20 @@ end
 -- score points and restart ball
 function checkBallBounds()
   if Ball.x < 0 then --ball hit left side
+    
     Ball.x = love.graphics.getWidth() /2 -- reset to center
     Ball.y = love.graphics.getHeight() / 2
     aiScore = aiScore + 1 -- point for ai
-    missed:play()
+    missed:play() 
     Ball.xVel = -Ball.speed  - 100 -- slow the serves a bit     
+    Ball.yVel = love.math.random(-200, 200) -- random Y direction for the serves
   elseif Ball.x > love.graphics.getWidth() - Ball.width then --ball hit right side
     Ball.x = love.graphics.getWidth() /2 -- reset to center
     Ball.y = love.graphics.getHeight() / 2
     playerScore = playerScore + 1 --point for player
     missed:play()
-    Ball.xVel = Ball.speed  - 100  
+    Ball.xVel = Ball.speed  - 100
+    Ball.yVel = - love.math.random(-200, 200)
   end
 
 -- bounce off the top and bottom
