@@ -2,8 +2,8 @@
 -- also learning classes using the classic.lua library
 -- Nov 12 - Pong is mostly playable but could use some graphics and the various game states could be detailed better. Still, not bad for 2 weeks work.
 
-function love.load()
-  love.graphics.setBackgroundColor(LIGHT_BLUE)
+function love.load()  
+  background = love.graphics.newImage("Assets/background1.png")
   
   font = love.graphics.newFont("Assets/INVASION2000.TTF", 40)
   
@@ -46,9 +46,10 @@ function love.update(dt)
 end 
 
 function love.draw()
-  love.mouse.setVisible(false)
-  
-  if gameState == 1 then --Welcome screen   
+  love.mouse.setVisible(false) 
+    
+  if gameState == 1 then --Welcome screen
+    love.graphics.setBackgroundColor(LIGHT_BLUE)
     love.graphics.setColor(MEDIUM_GREEN)     
     local text1 = "Welcome to PONG! by Peter"
     local text2 = "Space to start, ESC to quit"
@@ -59,10 +60,9 @@ function love.draw()
   end
   
   if gameState == 2 then --Playing screen
-    -- draw a center line
-    love.graphics.rectangle("fill", love.graphics.getWidth() /2, 0, 4, love.graphics.getHeight())
+    love.graphics.draw(background, 0, 0)    
     -- draw the scores
-    love.graphics.setColor(ORANGE)
+    --love.graphics.setColor(WHITE)
     love.graphics.print(playerScore, font, 200, 50)
     love.graphics.print(aiScore, font, 600, 50)
     love.graphics.setColor(WHITE)
