@@ -5,7 +5,7 @@ Player = Object:extend()
 function Player:new()
   self.width = 20
   self.height = 100
-  self.x = 20
+  self.x = 10
   self.y = love.graphics.getHeight() / 2 - self.height /2  
   self.speed = 600
 end
@@ -16,7 +16,9 @@ function Player:update(dt)
 end
 
 function Player:draw()
-  love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
+  local myPaddle = love.graphics.newImage("Assets/paddle2.png")
+  love.graphics.draw(myPaddle, self.x, self.y) 
+  --love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
 end
 
 -- control the Player's movement

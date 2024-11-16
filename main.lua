@@ -3,7 +3,7 @@
 -- Nov 12 - Pong is mostly playable but could use some graphics and the various game states could be detailed better. Still, not bad for 2 weeks work.
 
 function love.load()  
-  background = love.graphics.newImage("Assets/background1.png")
+  background = love.graphics.newImage("Assets/background800x600.png")
   
   font = love.graphics.newFont("Assets/INVASION2000.TTF", 40)
   

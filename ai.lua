@@ -3,7 +3,7 @@
 Ai = Object:extend()
 
 function Ai:new()
-  self.x = love.graphics.getWidth() - 40
+  self.x = love.graphics.getWidth() - 30
   self.y = love.graphics.getHeight() / 2 - 75
   self.width = 20
   self.height = 100
@@ -26,7 +26,9 @@ function Ai:update(dt)
 end
 
 function Ai:draw()
-  love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
+  --love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
+   local myPaddle = love.graphics.newImage("Assets/paddle2.png")
+  love.graphics.draw(myPaddle, self.x, self.y) 
 end
 
 function AiMove(dt)

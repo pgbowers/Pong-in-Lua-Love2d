@@ -21,7 +21,7 @@ function Ball:update(dt)
 end
 
 function Ball:draw()
-  local myBall = love.graphics.newImage("Assets/ball_small.png")
+  local myBall = love.graphics.newImage("Assets/ball25_bright.png")
   love.graphics.draw(myBall, self.x, self.y) 
 end
 
