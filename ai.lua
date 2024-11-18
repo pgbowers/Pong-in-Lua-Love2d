@@ -25,9 +25,8 @@ function Ai:update(dt)
   acquireBall()
 end
 
-function Ai:draw()
-  --love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
-   local myPaddle = love.graphics.newImage("Assets/paddle2.png")
+function Ai:draw()  
+  local myPaddle = love.graphics.newImage("Assets/paddle2.png")
   love.graphics.draw(myPaddle, self.x, self.y) 
 end
 

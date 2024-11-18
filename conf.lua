@@ -10,5 +10,6 @@ function love.conf(t)
   BRIGHT_BLUE = {0.1, 0.1, 0.6}
   MEDIUM_GREEN = {0.28, 0.33, 0.05}
   WHITE = {1, 1, 1}
-  ORANGE = {1, 0.35, 0, 1}  
+  ORANGE = {1, 0.35, 0, 1} 
+  BROWN = {0.3, 0.2, 0.15}
 end

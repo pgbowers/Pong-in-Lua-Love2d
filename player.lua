@@ -17,18 +17,19 @@ end
 
 function Player:draw()
   local myPaddle = love.graphics.newImage("Assets/paddle2.png")
-  love.graphics.draw(myPaddle, self.x, self.y) 
-  --love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
+  love.graphics.draw(myPaddle, self.x, self.y)  
 end
 
 -- control the Player's movement
 function movePlayer(dt)
+  -- keyboard code
   if love.keyboard.isDown('w') then
    Player.y = Player.y - Player.speed * dt
   elseif love.keyboard.isDown('s') then
    Player.y = Player.y + Player.speed * dt
   end
-  -- Nov 10, 2024 - gamepad code
+  
+  -- gamepad code
   if joystick then -- if a joystick/gamepad is connected     
     if joystick:getGamepadAxis('lefty') == 1 then     
       Player.y = Player.y + Player.speed * dt     

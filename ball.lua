@@ -51,8 +51,7 @@ end
 
 -- score points and restart ball
 function checkBallBounds()
-  if Ball.x < 0 then --ball hit left side
-    
+  if Ball.x < 0 then --ball hit left side    
     Ball.x = love.graphics.getWidth() /2 -- reset to center
     Ball.y = love.graphics.getHeight() / 2
     aiScore = aiScore + 1 -- point for ai
@@ -69,9 +68,9 @@ function checkBallBounds()
   end
 
 -- bounce off the top and bottom
-  if Ball.y > love.graphics.getHeight() - Ball.height then
+  if Ball.y > love.graphics.getHeight() - Ball.height - 10 then
     Ball.yVel = -Ball.yVel    
-  elseif Ball.y < 0 then
+  elseif Ball.y < 10 then
     Ball.yVel = - Ball.yVel
   end
 end

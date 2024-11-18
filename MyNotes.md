@@ -5,6 +5,6 @@ Tasks to complete the game:
   - Code some random Y velocity on serves - DONE
   - Draw my own paddles - DONE, Nov 16
   - Draw my own ball - Done, Nov 16
-  - Improve the background
+  - Improve the background - DONE - Nov 18
   
 When the above is done, make the code public on my Github and see if anyone uses it.

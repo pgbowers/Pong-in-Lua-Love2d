@@ -1,11 +1,13 @@
 -- Oct29, 2024 - An attempt to make a finished Pong game just for the experience - Peter
 -- also learning classes using the classic.lua library
--- Nov 12 - Pong is mostly playable but could use some graphics and the various game states could be detailed better. Still, not bad for 2 weeks work.
 
 function love.load()  
-  background = love.graphics.newImage("Assets/green_leather.png")
+  game_background = love.graphics.newImage("Assets/green_leather.png")
+  intro_background = love.graphics.newImage("Assets/intro_background.png")
+  over_background = love.graphics.newImage("Assets/over_background.png")
+  pause_background = love.graphics.newImage("Assets/pause_background.png")
   
-  small_font = love.graphics.newFont("Assets/INVASION2000.TTF", 40)
+  small_font = love.graphics.newFont("Assets/INVASION2000.TTF", 60)
   large_font = love.graphics.newFont("Assets/INVASION2000.TTF", 60)
   
   Object = require "classic"
@@ -50,20 +52,12 @@ function love.draw()
   love.mouse.setVisible(false) 
     
   if gameState == 1 then --Welcome screen
-    love.graphics.setBackgroundColor(LIGHT_BLUE)
-    love.graphics.setColor(MEDIUM_GREEN)     
-    local text1 = "Welcome to PONG! by Peter"
-    local text2 = "Space to start, ESC to quit"
-    love.graphics.print(text1, small_font, love.graphics.getWidth() / 2 - small_font:getWidth(text1) / 2, love.graphics.getHeight() / 2 - small_font:getHeight(text1) / 2)
-    love.graphics.print(text2, small_font, love.graphics.getWidth() / 2 - small_font:getWidth(text2) / 2, love.graphics.getHeight() / 2 - small_font:getHeight(text2) / 2 + 50)   
-
-    love.graphics.setColor(WHITE)
+    love.graphics.draw(intro_background, 0, 0)     
   end
   
   if gameState == 2 then --Playing screen
-    love.graphics.draw(background, 0, 0)    
-    -- draw the scores
-    --love.graphics.setColor(WHITE)
+    love.graphics.draw(game_background, 0, 0)    
+    -- draw the scores    
     love.graphics.print(playerScore, large_font, 200, 50)
     love.graphics.print(aiScore, large_font, 600, 50)
     love.graphics.setColor(WHITE)
@@ -73,19 +67,16 @@ function love.draw()
     Ball:draw()  
   end
   
-  if gameState == 3 then -- game over screen   
-    love.graphics.setColor(MEDIUM_GREEN)     
-    --local text = ("Game Over", winner, "the winner!")
-    love.graphics.print(winner, small_font, love.graphics.getWidth() / 2 - small_font:getWidth(winner) / 2, love.graphics.getHeight() / 2 - small_font:getHeight(winner) / 2)   
-    love.graphics.print("Play again? Y/N", small_font, love.graphics.getWidth() / 2 - small_font:getWidth("Play again Y/N") / 2, love.graphics.getHeight() / 2 + 50)   
+  if gameState == 3 then -- game over screen 
+    love.graphics.draw(over_background, 0, 0)
+    love.graphics.setColor(BROWN)
+    love.graphics.print(winner, small_font, love.graphics.getWidth() / 2 - small_font:getWidth(winner) / 2, (love.graphics.getHeight() - 400) - small_font:getHeight(winner) / 2)   
+    love.graphics.print("Play again? Y/N", small_font, love.graphics.getWidth() / 2 - small_font:getWidth("Play again Y/N") / 2, love.graphics.getHeight() / 2)   
     love.graphics.setColor(WHITE)
   end
   
-  if gameState == 4 then    
-    love.graphics.setColor(MEDIUM_GREEN)     
-    local text = "Game Paused"
-    love.graphics.print(text, small_font, love.graphics.getWidth() / 2 - small_font:getWidth(text) / 2, love.graphics.getHeight() / 2 - small_font:getHeight(text) / 2)   
-    love.graphics.setColor(WHITE)
+  if gameState == 4 then -- game paused screen
+    love.graphics.draw(pause_background, 0, 0)    
   end   
 end
 
