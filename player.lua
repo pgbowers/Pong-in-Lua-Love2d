@@ -5,7 +5,7 @@ Player = Object:extend()
 function Player:new()
   self.width = 20
   self.height = 100
-  self.x = 10
+  self.x = 15
   self.y = love.graphics.getHeight() / 2 - self.height /2  
   self.speed = 600
 end
@@ -40,10 +40,10 @@ end
 
 -- stay on the screen
 function checkPlayerBounds()
-  if Player.y < 0 then
-    Player.y = 0
-  elseif Player.y > love.graphics.getHeight() - Player.height then
-    Player.y = love.graphics.getHeight() - Player.height
+  if Player.y < 10 then
+    Player.y = 10
+  elseif Player.y > love.graphics.getHeight() - Player.height -10 then
+    Player.y = love.graphics.getHeight() - Player.height - 10
   end
 end
 

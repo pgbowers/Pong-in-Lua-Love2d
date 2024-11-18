@@ -3,7 +3,7 @@
 Ai = Object:extend()
 
 function Ai:new()
-  self.x = love.graphics.getWidth() - 30
+  self.x = love.graphics.getWidth() - 35
   self.y = love.graphics.getHeight() / 2 - 75
   self.width = 20
   self.height = 100
@@ -47,9 +47,9 @@ end
 
 -- stay on the screen
 function checkAiBounds()
-  if Ai.y < 0 then
-    Ai.y = 0
-  elseif Ai.y > love.graphics.getHeight() - Ai.height then
-    Ai.y = love.graphics.getHeight() - Ai.height
+  if Ai.y < 10 then
+    Ai.y = 10
+  elseif Ai.y > love.graphics.getHeight() - Ai.height - 10 then
+    Ai.y = love.graphics.getHeight() - Ai.height - 10
   end
 end
